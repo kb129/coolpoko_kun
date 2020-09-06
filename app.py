@@ -1,5 +1,6 @@
 # coding: utf-8
 from flask import Flask
+import coolpoko_markov as poko
 
 app = Flask(__name__)
 

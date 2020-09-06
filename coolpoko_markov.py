@@ -1,14 +1,14 @@
 from requests_oauthlib import OAuth1Session
-import config
+import os
 import json
 import markovify
 import re
 from janome.tokenizer import Tokenizer
 
-api = OAuth1Session(config.CONSUMER_KEY,
-                            config.CONSUMER_SECRET,
-                            config.ACCESS_TOKEN,
-                            config.ACCESS_TOKEN_SECRET)
+api = OAuth1Session(os.environ["CONSUMER_KEY"],
+                            os.environ["CONSUMER_SECRET"],
+                            os.environ["ACCESS_TOKEN"],
+                            os.environ["ACCESS_TOKEN_SECRET"])
 def get_tweet_texts(word):
     url = 'https://api.twitter.com/1.1/search/tweets.json'
     query = word+' min_retweets:100 min_faves:100 exclude:retweets'
